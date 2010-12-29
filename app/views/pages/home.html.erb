@@ -1,0 +1,20 @@
+<h1>Welcome</h1>
+<h3>Enter details to search</h3>
+
+<% form_tag(:controller => "pages", :action => "processing", :method => "get", :class => "nifty_form") do %>
+  <div class="field">
+    <%= label_tag(:source, "From") %><br />
+    <%= text_field_tag(:source) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:destination, "To")%><br />
+    <%= text_field_tag(:destination) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:date, "Date")%><br />
+    <%= text_field_tag(:date)%>
+  </div>
+  <div class="actions">
+    <%= submit_tag("Search")%>
+  </div>
+<% end %>

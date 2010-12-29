@@ -1,4 +1,14 @@
 SecondTask::Application.routes.draw do
+  resources:users
+
+  match '/home', :to => 'pages#home'
+  match '/results', :to => 'pages#results'
+  match '/processing', :to => 'pages#processing'
+  match '/get_status', :to => 'pages#get_status'
+
+  root :to => 'pages#home'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

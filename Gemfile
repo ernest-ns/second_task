@@ -7,6 +7,20 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+group :development do
+  gem 'rspec-rails', '2.3.0'
+  gem 'annotate-models', '1.0.4'
+  gem 'pdf-toolkit'
+  gem 'pdf-writer'
+end
+
+group :test do
+  gem 'rspec', '2.3.0'
+  gem 'webrat', '0.7.1'
+  gem 'factory_girl_rails','1.0'
+end
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
