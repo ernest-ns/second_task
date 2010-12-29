@@ -27,10 +27,16 @@ describe PagesController do
     end
   end
 
-  describe "GET 'processing'" do
+  describe "GET 'get_status'" do
+    it "should be sucessful" do
+    end
+  end
+
+  describe "'background_process' should set status variable to 100" do
     it "should be successful" do
-      get 'processing'
-      response.should be_success
+      pc = BackgroundProcess.new
+      pc.start_process
+      pc.progress.should equal(100)
     end
 
     it "should have right titles" do

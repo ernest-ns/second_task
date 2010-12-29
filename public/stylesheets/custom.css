@@ -179,11 +179,11 @@ div.field, div.actions {
 #progress_bar {
     width:1px;
     height:20px;
-    border: 2px solid;
+    border: none;
     background-color: blue;
 }
 #progress_bar_container {
-    width:300px;
-    height:22px;
+    width:200px;
+    height:20px;
     border: 1px solid black;
 }

@@ -1,12 +1,17 @@
-  def get_status                                                                                                                   
-    @t1["status"]                                                                                                                  
-  end                                                                                                                               
+class BackgroundProcess
+  attr_accessor :progress
+  @@progress = 0
 
-  def background_process
-    status = 0
-    unless(status==100)
-      sleep(10000)
-      status+=5
+  def progress
+    @@progress
+  end
+  
+  def start_process
+    @@progress = 0
+    while(@@progress < 100) do
+      sleep(1/4)
+      @@progress+=5
     end
   end
 
+end
