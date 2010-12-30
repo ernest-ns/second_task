@@ -5,7 +5,6 @@ SecondTask::Application.routes.draw do
   match '/results', :to => 'pages#results'
   match '/processing', :to => 'pages#processing'
   match '/get_status', :to => 'pages#get_status'
-  match 'redirection', :to => 'pages#redirection'
   root :to => 'pages#home'
 
 

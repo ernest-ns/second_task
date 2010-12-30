@@ -1,7 +1,7 @@
 var status
 var animation_timer
 $(function(){
-     animation_timer = setInterval(get_status_and_animate,1000);
+     animation_timer = setInterval(get_status_and_animate,500);
 });
 
 function get_status_and_animate(){
@@ -14,14 +14,14 @@ function get_status_and_animate(){
 	window.location="/results";
     }
     console.info("calling animate function with status:"+status)
-    animate_progress_bar();    
+    animate_progress_bar(status);    
 }
-function animate_progress_bar() {
+function animate_progress_bar(status) {
     console.info("calling animate_progress_bar()")
     $('#progress_bar').each(function(){
 	$(this).animate(
 	    {
-		width: $(this).width() + 10
+		width: $('#progress_text').width * (status/100)
 	    },
 	    500
 	);

@@ -40,6 +40,7 @@ describe PagesController do
     end
 
     it "should have right titles" do
+      session[:bkg_process] = BackgroundProcess.new
       get 'processing'
       response.should have_selector('title', :content => "Wait")
     end

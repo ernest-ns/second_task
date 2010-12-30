@@ -1,0 +1,31 @@
+class BackgroundProcess
+
+  attr_accessor :progress
+  def initialize
+    @progress = 0
+  end
+#  def get_progress
+#    puts "progress method getting called#{@progress}"
+#    @progress
+#  end
+
+  def start_process
+    puts "inside start_process"
+    while(@progress < 100) do
+      @progress+=5
+      dummy_sleep(5)  
+      puts "inside start_process#{@progress}"
+      puts "checking the progress:#{progress}"
+    end
+    puts "This is at the end ot the thread#{progress}"
+  end
+
+  def dummy_sleep(factor)
+    puts "Inside dummy sleep with factor #{factor}"
+    count = 10000 * factor
+    while (count>0) do
+      count -=1
+    end
+  end
+
+end
