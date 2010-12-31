@@ -10,7 +10,7 @@ class BackgroundProcess
     puts "inside start_process"
     while(@progress < 100) do
       @progress+=5
-      Thread.current["thread_status"] = progress
+      Thread.current[:thread_status] = @progress
       dummy_sleep(20)  
       puts "Inside the while loop of 'start_process' the value of progress is :#{progress}"
     end

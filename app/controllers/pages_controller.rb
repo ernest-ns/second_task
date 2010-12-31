@@ -3,12 +3,12 @@ class PagesController < ApplicationController
   def home
     @title = "Home"
     reset_session
-    session[:bkg_process] = BackgroundProcess.new
+    session[:background_thread] = ""
   end
 
   def results
     @title = "Results"
-    session[:bkg_process] = nil
+    session[:background_thread] = nil
   end
 
   def processing
@@ -16,16 +16,20 @@ class PagesController < ApplicationController
     logger.info("This is before the thread has started")
 
     thread_process=Thread.new {
-      session[:bkg_process].start_process
+      bkg_process = BackgroundProcess.new
+      bkg_process.start_process
     }
-    session[:thread_process] = thread_process
-    logger.info("This is after the thread has been stared:#{t}")
-    logger.info "The value of progress just after the thread has been started#{session[:bkg_process].progress}"    
+
+    session[:background_thread] = thread_process.object_id
+#    logger.info "The value of progress just after the thread has been started#{session[:background_thread][:thread_status]}"    
   end
 
   def get_status
-    logger.info "Inside get status with the value of progress as :#{session[:bkg_process].progress}"
-    logger.info "Inside 'get_status' using thread variable the value of progress is :#{session[:thread_process]["thread_status"]}"
-    render(:text => "#{session[:bkg_process].progress}" )
+#    logger.info "Inside 'get_status' using thread variable the value of progress is :#{session[:background_thread][:thread_status]}"
+    Thread.list.each do |t|
+      if(t.object_id == session[:background_thread])
+        render(:text => "#{t[:thread_status]}")
+      end
+    end
   end
 end

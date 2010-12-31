@@ -1,4 +1,4 @@
-var status
+var status = 0
 var animation_timer
 $(function(){
      animation_timer = setInterval(get_status_and_animate,500);
@@ -21,9 +21,10 @@ function animate_progress_bar(status) {
     $('#progress_bar').each(function(){
 	$(this).animate(
 	    {
-		width: $('#progress_text').width * (status/100)
+		width: status+"%"
 	    },
 	    500
 	);
     });
+    $('#progress_text p').text( status+"% completed")
 }
